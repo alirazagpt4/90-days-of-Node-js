@@ -1,0 +1,15 @@
+{
+  "name": "90-90-1",
+  "version": "1.0.0",
+  "description": "Closures - is the combination of functions bundled together (enclosed) with reference to its surrounding state (the lexical environment).\r in others words , a Closures gives a function access to its outer scope.\r In javascript a , a closure is created every time a function is created , at function creation time.",
+  "main": "AppendFile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  }
+}
