@@ -296,3 +296,94 @@ Response -                      The res object  is used to send back data or mes
 
 In simple :
 Request (req) is what you get from the client, and Response (res) is what you send back to the client.
+
+
+Express Router -  in express.js , Router is a way to create modular , mountable route handlers
+                  Think of it as a mini express app without features of full app(like .listen()). it helps to seperate routes and logic into files.Keeping your code clean and manageable.
+
+Modular Code -    it means breaking your code into small , reusable pieces(modules).
+           
+                      In an Express App, you can seperate:
+                          
+                          Routes(routes/).
+
+                          Controllers or logic (controllers/).
+
+                          Database or models.
+
+                          App setup.
+
+
+  Error Handling in node js :  it means writing code that catches and responds to unexpected
+                               issues (errors) in your program.
+
+                               __ like missing files , wrong input or failed input requests -
+                                  instead of crashing.
+
+
+                         
+                          Types of Error
+                           
+                          Programmer :
+
+                                     1: mistakes in the logic and syntax of the code.
+
+                                     2:can be fixed by editing source code.
+
+                                     3:ex, trying to access a property of undefined variable.
+                          
+                          Operational:
+                                   
+                                     1: antiticipated and accounted for (expected).
+
+                                     2: when an operation has the potential o fail.
+
+                                     3: handled by determining what should happen if it fails.
+
+                                     4: ex ; " User not found " , " Not Authorized".
+
+
+JWt in node js ?       -           JWT stands for json web token                              
+                                       jwt is a secure token that server gives to client for 
+                                       secure authication of user and it is stateless
+
+
+                                    JWT consists of 3 parts 
+
+                                        1: Header (type:jwt and algorithm (e.g HS256)).
+
+                                        2: Payload (User info (e.g userId , email etc)).
+
+                                        3: Signature : Secret key to signature data.
+
+
+                                    Working of jwt
+                                        
+                                        user login krta hai =>
+
+                                        server token banata hai aur client ko bhejta hai ->
+
+                                        client har protected route main token send krta hai =>
+
+Role-Base Authorization -                it is a technique that we 
+                                         asign specfic roles to a user (e.g Admin , User , Editor) and according to that role they have permissions to do the things.
+
+
+                                      Role-Base Authorization basic concept : 
+
+                                      Authentication: Verify the identity of  user (using login).
+
+                                      Authorization: decide what access we give to user (based on Role).
+
+                                      Example : 
+                                                admin : can manage user and data.
+
+                                                user : can only access its data.
+
+
+                                        Step | What Happens
+                                                  ✅ Login | JWT token generate hota hai
+                                                  🍪 Cookie | Token client browser mein store
+                                                  🔐 Middleware | Cookie se token extract, verify
+                                                  🔍 RBAC | Role check hota hai
+                                                  🎯 Final | Access allowed ya denied               
