@@ -387,3 +387,17 @@ Role-Base Authorization -                it is a technique that we
                                                   🔐 Middleware | Cookie se token extract, verify
                                                   🔍 RBAC | Role check hota hai
                                                   🎯 Final | Access allowed ya denied               
+
+
+Visual Summary Of RBAC:
+
+[Client]
+→ Signup/Login → Token milta hai cookie mein
+
+[Client Browser]
+→ Har request ke saath cookie send hoti hai
+
+[Server]
+→ Middleware JWT verify karta hai → req.user mein info inject karta hai
+→ Role middleware (RBAC) role check karta hai
+→ If allowed → data send, else → 403 Access Denied
