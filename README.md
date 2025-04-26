@@ -401,3 +401,25 @@ Visual Summary Of RBAC:
 → Middleware JWT verify karta hai → req.user mein info inject karta hai
 → Role middleware (RBAC) role check karta hai
 → If allowed → data send, else → 403 Access Denied
+
+
+Multer and Cloudnary for File Uploads in node js - 
+                                                      use multer and cloudnary packages to
+                                                      to work with file uploads.
+
+                                                      steps :
+                                                             1: require multer.
+                                                             2: allocate diskstorage.
+                                                             3: upload.single or array.
+
+
+Sending email in node js : 
+                                  steps:
+                                        1: install nodemailer.
+                                        2:  create a  SMTP transporter
+                                        3: Create Email contents ( to , from , subject ,  body , attachments).
+                                        4: to send email use transporter.sendMail() fn.
+                                        5: SMTP accepts it and semd it to receipent inbox.
+
+                                        
+                                         
