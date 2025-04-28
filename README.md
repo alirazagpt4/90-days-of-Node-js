@@ -422,4 +422,55 @@ Sending email in node js :
                                         5: SMTP accepts it and semd it to receipent inbox.
 
                                         
-                                         
+
+                    <...... Mongo DB Intro ........>
+
+
+                    Sql vs NoSql
+
+                    sql                                 NoSql
+                  
+                    sql - structured Query language     nosql - Not only Sql
+
+                    Tradtional relational db system     Modern flexible db system
+
+                    data stored in Tables(rows/columns) data stored in documents , key-value ,
+                                                        graph or wide-column format.
+                                                        
+                    Cluster                             Cluster
+                    Tables                              Collections
+                    Rows                                Documents
+                    Columns                             Fields
+
+MongoDB is a popular open-source NoSQL database that stores data in flexible, JSON-like documents, which are then organized into collections.
+
+                           it stores data in Json format which optimised version we called
+                            (BSON).
+
+
+                                {
+                                      "name": "Ali",
+                                      "age": 25,
+                                      "email": "ali@example.com"
+                                }
+
+CRUD Operations in Mongo db : CREATE - READ - UPDATE - DELETE
+
+                   Create:
+                          db.students.insertOne()
+                          db.students.insertMany()
+
+                   Read:
+                          db.students.find()
+                          db.students.findOne()
+                  
+                   Update: 
+                          db.students.updateOne()
+                          db.students.updateMany()
+
+                   Delete:
+                          db.students.deleteOne();
+                          db.students.deleteMany();
+
+
+
