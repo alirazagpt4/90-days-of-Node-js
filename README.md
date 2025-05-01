@@ -606,9 +606,14 @@ Aggregation Pipeline              - The aggregation process in MongoDb consist o
 
                             ]);
 
-
+                            $project - includes/excludes fields or transforming the fields
+                            $sort - sorting the data by asc or dsc.
 
                             
+
+
+
+
 
 
 
