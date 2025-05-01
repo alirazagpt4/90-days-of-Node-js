@@ -473,4 +473,143 @@ CRUD Operations in Mongo db : CREATE - READ - UPDATE - DELETE
                           db.students.deleteMany();
 
 
+ In Mongoose (ORM stands for object relational mapper Or ODM object data mapping)
+                               
+                   find() method returns an array of objects.
+                   findOne() method returns an object.
+                   findByIdAndUpdate() method first finds the id and then update record.
+                   findByIdAndDelete() method first finds the id and then delete record.
+
+
+Schema Design - in mongo db is how you structure your data in collections and documents.
+
+                         Common Schema design approaches :
+
+                            Embedding(nested objects) - embed related data directly
+                                                        inside the document.
+
+                                     e.g
+                                          {
+                                                 "name":"Ali",
+                                                 
+                                                 "orders":[
+                                                        {"item":"laptop","price":30000},
+                                                        {"item":"mobile","price":300000},
+                                                 ]
+                                          } Note: best when data is small and fetched      together.
+
+                           Referencing (Normalization) - stored data in different collections
+                                                         and reference by _id.
+
+                                   e.g
+                                       user collection
+
+                                       {
+                                          "_id":1,
+                                          "name":"Ali"
+                                       }
+
+                                       orders collection
+
+                                       {
+                                          userId:1,
+                                          "item":"laptop",
+                                          "price" : 120000
+                                       }
+
+                                       Note: best when data is large and reused (many to many).
+
+Aggregation                       - it groups the data from multiple documents to a single
+                                    document based on the specified expression 
+
+Aggregation Pipeline              - The aggregation process in MongoDb consist of several
+                                    stages.each stage transforming the data in some way.
+                                    The Output of the one stage is fed as the input of
+                                    the next stage and so on, until the final stage produces
+                                    the desired results.
+                                    Mongo DB provides several built-in aggregation pipeline stages to permform various operations on data.
+
+                                     $group
+                                     $sum
+                                     $avg
+                                     $min
+                                     $max 
+
+
+                                      Sample Query of Aggregation Pipeline
+
+                                      db.collection.aggregate(pipeline , options);
+
+                                      pipeline - array of aggregation stages - $match , $group.
+
+                                      options - object with additional settings - allowDiskUse, collation etc.
+
+                             Example:
+
+                             db.teachers.aggregate([
+                                  {  $group : {
+                                          _id:"$field",students:{
+                                                 $push:"$$ROOT"
+                                          }
+                                    }
+                                  }
+                             ]);
+
+                             $$ROOT value is a reference to the current document being 
+                             processed in the pipeline, which represents the complete
+                             document.
+
+                             Example 2:
+
+                                db.teachers.aggragate([ {
+                                   $match:{gender:"male"}
+                                } , {
+                                   $group:{
+                                          _id:"$age",
+                                          CountOfTeachersInThisAgeGroup:{$sum:1}
+                                   }
+                                }])
+
+                            $unwind flattens an array to create many different copies of same array
+                            $avg operator use find average of specific field.
+                            $size:<expression>
+                            $ifNull:[<array>,<replacement of array>]
+                            $addToSet - for unique values.
+                            $filter
+                            $bucket operator
+
+                            $bucket:{
+                                   groupBy:"$age",
+                                   boundaries:[0,30,40],
+                                   default:greater than 40,
+                                   output:{
+                                          count:{$sum:1}
+                                   }
+                            }
+
+
+                            $lookup - joins the document
+
+
+                            Example:
+                            db,cust.aggregate([
+
+                            {
+
+                             $lookup:{
+                                   from:"orders",
+                                   localField:"_id",
+                                   foreignField:"c_id",
+                                   as : "Order_details"
+                             }
+                            },
+
+                            ]);
+
+
+
+                            
+
+
+
 

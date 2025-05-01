@@ -44,6 +44,60 @@ app.post('/add-user', async (req, res) => {
   }
 });
 
+
+
+app.get('/users' , async (req , res)=>{
+  try{
+         const users = await User.find();
+          res.status(200).json(users);
+  }
+  catch(err){
+    console.error('Error fetching users:', err);
+    res.status(500).json({ message: 'Error fetching users', error });
+  }
+})
+
+app.get('/user/:id' , async (req , res)=>{
+  try{
+         const users = await User.findOne();
+          res.status(200).json(users);
+  }
+  catch(err){
+    console.error('Error fetching users:', err);
+    res.status(500).json({ message: 'Error fetching users', error });
+  }
+});
+
+
+app.put('/update-user/:id' , async (req , res)=>{
+  try{
+         const { name, email , password , cnic } = req.body;
+         const id = req.params.id;
+         const users = await User.findByIdAndUpdate(id , { name, email , password , cnic } , { new: true });
+          res.status(200).json(users);
+  }
+  catch(err){
+    console.error('Error fetching users:', err);
+    res.status(500).json({ message: 'Error fetching users', error });
+  }
+});
+
+
+
+app.delete('/delete-user/:id' , async (req , res)=>{
+  try {
+    const id = req.params.id;
+    const users = await User.findByIdAndDelete(id);
+    res.status(200).json(users);
+    
+  } catch (error) {
+    console.error('Error fetching users:', error);
+  }
+})
+
+
+
+
 // 7. Start the Express Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
