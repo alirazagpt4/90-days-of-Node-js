@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 // 4. Connect to MongoDB Atlas
-mongoose.connect('mongodb+srv://ali4aug24webgpt:SX7HxWdkQWZoQuCi@cluster0.1cvcyyq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+mongoose.connect('mongodb://localhost:27017/'
 )
 .then(() => console.log("MongoDB Atlas Connected Successfully"))
 .catch(err => console.error("MongoDB Atlas Connection Failed", err));
