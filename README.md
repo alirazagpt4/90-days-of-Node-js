@@ -624,4 +624,50 @@ Choose Receiver from Dropdown
 Enter Amount → Press "Send"
 ↓
 Backend: Run Transaction
+
+
+
+Connecting Mongo db with express using Mongoose - 
+
+-> first install the mongoose package
+-> Second Require that package in express app
+-> Third use mongoose.connect('connection string').then().catch() that returns a promise
+-> create schema with new mongoose.Schema({}) function.
+-> then create a model like mongoose.model('collection name' , Schema)
+-> used it in your app
+
+
+                         npm i mongoose
+
+                         const mongoose = require("mongoose");
+
+                         mongoose
+                                 .connect('mongodb://127.0.0.1:27017/myDb')
+                                 .then(()=>console.log('mongo connected'))
+                                 .catch(err => console.log('Mongo Err' , err))
+
+                        const userSchema = new mongoose.Schema({
+                            name:string,
+                            email:{
+                                   type:String,
+                                   unique:true,
+                                   required:true
+                            },
+                            password:String
+                        });
+
+                        const User = mongoose.model('user' , userSchema)
+
+
+
  
+Relationships in mongo db  - 
+                            one-to-one relation
+                              e.g 
+                                  One user have only one profile.
+                            one-to-many relation (mostly used)
+                              e.g
+                                  One user have multiple posts in social media.
+                            many-to-many
+                              e.g
+                                  Many students enroll in many courses.
